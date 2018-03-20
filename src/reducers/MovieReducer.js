@@ -10,6 +10,7 @@ const initState = {
 export default function(state = initState, action) {
     switch (action.type) {
         case ActionTypes.GET_LIST_MOVIE_BEGIN:
+        console.log("get list movie begin");
             return {
                 ...state,
                 loading: true,
@@ -19,15 +20,19 @@ export default function(state = initState, action) {
             return {
                 ...state,
                 loading: false,
-                movies: action.payload
+                movies: action.payload.results
             };
         case ActionTypes.GET_LIST_MOVIE_ERROR:
             return {
                 ...state,
                 loading: false,
-                error: action.payload.error,
+                error: action.error,
                 movies: []
             };
+        case ActionTypes.SHOW_DETAIL_MOVIE:
+            return {
+                ...state,
+            }
         default:
             return state;
     }

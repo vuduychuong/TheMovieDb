@@ -10,10 +10,17 @@ export function getListMovie() {
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
-                dispatch(getListMovieSuccess(json.results));
-                return json.results;
+                dispatch(getListMovieSuccess(json));
             })
             .catch(error => dispatch(getListMovieError(error)));
+    };
+}
+
+export function showDetailMovie(item) {
+    console.log(item);
+    return {
+        type: ActionTypes.SHOW_DETAIL_MOVIE,
+        item: item
     };
 }
 

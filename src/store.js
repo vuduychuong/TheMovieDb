@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import rootReducer from "./reducers/MovieReducer";
 import thunk from "redux-thunk";
+import { apiMiddleware } from "./middlewares/APIMiddleware";
 import { composeWithDevTools } from "redux-devtools-extension";
 //
 // const initState = {
@@ -17,6 +18,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 //     }
 // };
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+    rootReducer,
+    {},
+    composeWithDevTools(applyMiddleware(thunk, apiMiddleware))
+);
 
 export default store;
