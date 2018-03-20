@@ -4,24 +4,17 @@ import rootReducer from "./reducers/MovieReducer";
 import thunk from "redux-thunk";
 import { apiMiddleware } from "./middlewares/APIMiddleware";
 import { composeWithDevTools } from "redux-devtools-extension";
-//
-// const initState = {
-//     value: 10
-// };
-//
-// const reducer = (state = initState, action) => {
-//     switch (action.type) {
-//         case "UP":
-//             return { value: state.value + 1 };
-//         default:
-//             return state;
-//     }
-// };
+import { createReactNavigationReduxMiddleware } from "react-navigation-redux-helpers";
+
+const middleware = createReactNavigationReduxMiddleware(
+    "root",
+    state => state.nav
+);
 
 const store = createStore(
     rootReducer,
     {},
-    composeWithDevTools(applyMiddleware(thunk, apiMiddleware))
+    composeWithDevTools(applyMiddleware(thunk, middleware))
 );
 
 export default store;

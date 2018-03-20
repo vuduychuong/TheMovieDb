@@ -1,6 +1,6 @@
 import { StackNavigator } from "react-navigation";
 
-export const AppNavigator = StackNavigator(AppRouteConfigs);
+export const AppNavigator = StackNavigator();
 
 const initialState = AppNavigator.router.getStateForAction(
     AppNavigator.router.getActionForPathAndParams("Login")
